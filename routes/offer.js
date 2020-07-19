@@ -120,9 +120,20 @@ router.get("/offer/with-count", async (req, res) => {
       //with-count?sort=price-asc => Offer.find().sort({ price: "asc" });
       sort = { price: "asc" };
     }
-
-    console.log(req.query);
-    res.json(req.query);
+    let page = Number(req.query.page);
+    let limit = Number(req.query.limit);
+    const offers = await Offer.find(filter)
+      .sort(sort)
+      .skip((page - 1) * limit)
+      .limit(limit)
+      .populate({ path: "creator", select: "account.username account.phone" });
+    // console.log(req.query);
+    // res.json(req.query);
+    const count = await Offer.countDocuments(filter);
+    res.json({
+      count: count,
+      offers,
+    });
   } catch (error) {
     res.json({ error: error.message });
   }
