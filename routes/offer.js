@@ -50,29 +50,6 @@ router.post("/offer/publish", isAuthenticated, async (req, res) => {
   }
 });
 
-// router.get("/offer/with-count", async (req, res) => {
-//   try {http://localhost:3000/offer/with-count?page=1
-
-//     //   const offers = await Offer.find({
-//     //     price: {
-//     //       $gte: 100, // req.query.priceMin
-//     //       $lte: 700, // req.query.priceMax
-//     //     },
-//     //   }).select("title price");
-
-//     //   const offers = await Offer.find({ title: new RegExp("PlayStation", "i") }); // i = insensitive
-//     //   const offers = await Offer.find().sort({ price: "desc" });
-
-//     //   const offers = await Offer.find({
-//     //     title: new RegExp("PlayStation", "i"),
-//     //   }).sort({ price: "asc" });
-//     res.json({ message: "/offer/withcount" });
-//   } catch (error) {
-//     console.log(error.message);
-//     res.status(400).json({ message: error.message });
-//   }
-// });
-
 router.get("/offer/with-count", async (req, res) => {
   try {
     const filter = {};

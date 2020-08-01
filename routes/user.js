@@ -79,5 +79,16 @@ router.post("/user/log_in", async (req, res) => {
     res.json({ message: error.message });
   }
 });
-
+router.get("/user/:id", async (req, res) => {
+  try {
+    const searchUser = await User.findById(req.params.id);
+    console.log(req.params.id);
+    console.log(req.params);
+    console.log(searchUser);
+    res.json(searchUser);
+  } catch (error) {
+    console.log(error.message);
+    res.json({ message: error.message });
+  }
+});
 module.exports = router;
