@@ -19,7 +19,9 @@ mongoose.connect(process.env.MONGODB_URI, {
   useUnifiedTopology: true,
   useCreateIndex: true,
 });
-
+app.get("/", async (req, res) => {
+  res.json("Server started");
+});
 app.listen(process.env.PORT, () => {
   console.log("server started");
 });
