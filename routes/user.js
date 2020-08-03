@@ -28,7 +28,7 @@ router.post("/user/sign_up", async (req, res) => {
           salt: salt,
           account: {
             username: req.fields.username,
-            phone: req.fields.phone,
+            // phone: req.fields.phone,
           },
         });
 
